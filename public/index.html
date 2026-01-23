@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
@@ -7,14 +8,37 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
 </head>
-<body>
 
-    <h1>Bienvenue sur la page d'accueil!</h1>
-    <input type="text" id="monInput">
-    <input type="button" value="Cliquez-moi" id="monBouton">
-    <input type="button" value="Cliquez-moi aussi" id="monBouton2">
-    <div id="rep">  </div>
-    <div id="rep2">  </div>
+<body>
+    <div id="la-haut">
+        <input type="button" value="Cliquez-moi aussi" id="monBouton2">
+        <div id="rep"> </div>
+        <div id="rep2"> </div>
+    </div>
+    <div id="contenue">
+        <h1 id="bombe">Bienvenue sur la page d'accueil!</h1>
+        <div class="color">
+            <h2>Login :</h2>
+            <input type="text" id="monInput">
+        </div>
+        <div class="color">
+            <h2> Mot De Passe :</h2>
+            <input type="text" id="monInput2">
+            <input type="button" value="Inscription" id="monBouton">
+        </div>
+    </div>
+    <div id="votreSection">
+        <div class="color1">
+            <select id="usersList"></select>
+            <input type="button" value="Voter pour l'utilisteur" id="userSelectedButton">
+        </div>
+        <div id="resultat1">
+            <table id="resultat">
+
+            </table>
+        </div>
+    </div>
 </body>
 <script src='main.js'></script>
+
 </html>

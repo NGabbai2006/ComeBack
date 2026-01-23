@@ -1,4 +1,5 @@
 const monInput = document.getElementById('monInput'); // Récupération de l'élément input
+const monInput2 = document.getElementById('monInput2'); // Récupération du deuxième élément input
 const monBouton = document.getElementById('monBouton'); // Récupération de l'élément bouton
 const monBouton2 = document.getElementById('monBouton2'); // Récupération du deuxième bouton
 
@@ -24,16 +25,80 @@ monBouton2.addEventListener('click', () => {
 });
 
 
+
 monBouton.addEventListener('click', () => { // Ajout d'un écouteur d'événement au bouton
     fetch('/register', { // Requête POST vers /register
         method: 'POST', // Méthode POST
         headers: { // En-têtes de la requête
             'Content-Type': 'application/json' // Indication que le corps de la requête est en JSON
         },
-        body: JSON.stringify({ inputValue: monInput.value }) // Corps de la requête avec la valeur de l'input convertie en JSON
+        body: JSON.stringify({ V_log: monInput.value, V_pass: monInput2.value }) // Corps de la requête avec la valeur de l'input convertie en JSON
     })
         .then(response => response.json()) // Conversion de la réponse en JSON
         .then(data => { // Traitement de la réponse JSON
-            alert(data); // Affichage d'une alerte avec la réponse
+            alert(data.message); // Affichage d'une alerte avec la réponse
         });
 });
+
+window.onload = () => {
+    fetch('/users')
+        .then(response => response.json())
+        .then(users => {
+            const usersList = document.getElementById('usersList');
+            users.forEach(user => {
+                const option = document.createElement('option');
+                option.value = user.id;
+                option.text = user.login;
+                usersList.appendChild(option);
+
+            });
+        });
+    
+//===================================================================================================    
+
+    tabvote();
+}
+
+const usersList = document.getElementById('usersList');
+const userSelectedButton = document.getElementById('userSelectedButton');
+userSelectedButton.addEventListener('click', () => {
+    const usersList = document.getElementById('usersList');
+    const selectedUserId = usersList.value;
+    alert('Utilisateur sélectionné ID : ' + selectedUserId);
+    fetch('/vote', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ idUser: selectedUserId })
+    })
+        .then(response => response.json())
+        .then(data => {
+            alert(data.message);
+        });
+        
+});
+
+function tabvote(){
+    const usersList = document.getElementById('usersList');
+    const selectedUserId = usersList.value;
+    fetch('/voteCount', {
+    })
+        .then(response => response.json())
+        .then(data => {
+            const result = document.getElementById('resultat');
+            data.forEach(Tvote => {
+            const tr = document.createElement("tr");
+            result.appendChild(tr);
+            const td = document.createElement("td");
+            td.innerText = Tvote.login;
+            tr.appendChild(td);
+            const td1 = document.createElement("td");
+            td1.innerText = "   " + Tvote.voteCount;
+            tr.appendChild(td1);
+            
+            
+            
+        });
+    })
+}

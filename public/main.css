@@ -1,0 +1,118 @@
+body {
+    height: 100vh;
+    background: linear-gradient(135deg, #2a3f2a, #4f7a4f, #2a3f2a);
+    animation: forestWave 6s ease-in-out infinite;
+    font-family: Arial, sans-serif;
+    color: #2b2b2b;
+}
+
+@keyframes forestWave {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+#contenue {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.color {
+    border-radius: 10px;
+    border: 2px solid #4a6b3f;
+    background: #d8e8d0;
+    padding: 15px;
+    margin-bottom: 15px;
+    width: 40vh;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.color:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 10px #a4c49b;
+}
+
+#bombe {
+    color: #e8ffe0;
+    text-shadow: 0 0 8px #a4c49b;
+}
+
+#la-haut {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border: 2px solid #4a6b3f;
+    background-color: #d8e8d0;
+    padding: 10px;
+    border-radius: 5px;
+    width: max-content;
+}
+
+.color1 {
+    border: 2px solid #4a6b3f;
+    background-color: #cfe7c4;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    width: 30vh;
+    animation: breathe 4s ease-in-out infinite;
+}
+
+@keyframes breathe {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* TABLEAU AU-DESSUS */
+#votreSection {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+}
+
+/* TABLEAU */
+#resultat1 {
+    font-size: 20px;
+    width: 90%;
+    max-width: 900px;
+    min-height: 250px;
+    padding: 20px;
+    border: 2px solid #4a6b3f;
+    border-radius: 10px;
+    background: #e9f5e3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: wind 6s infinite;
+    overflow: hidden;
+}
+
+@keyframes wind {
+    0% { background-color: #e9f5e3; }
+    50% { background-color: #f3ffe9; }
+    100% { background-color: #e9f5e3; }
+}
+
+#resultat {
+    width: 100%;
+    border-radius: 10px;
+    border: 2px solid #4a6b3f;
+    background: #ffffff;
+    table-layout: fixed;
+    font-size: 25px;
+    letter-spacing: 1px;
+}
+
+td, th {
+    border: 1px solid #4a6b3f;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 15px;
+    color: #2b2b2b;
+}
